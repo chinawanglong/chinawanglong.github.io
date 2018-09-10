@@ -31,7 +31,7 @@ Email ： ycitwl@163.com
 
 Blog ：[http://wanglong.org.cn](http://wanglong.org.cn)
 
-Github ：  [github](https://github.com/chinawanglong)
+Github ：  [https://github.com/chinawanglong](https://github.com/chinawanglong)
 
 wechat ：   ![wechat](www.wanglong.org.cn/images/wx_add.jpeg)
 <p>
