@@ -30,10 +30,10 @@ QQ：   374562570
 Email ： ycitwl@163.com
 
 <p>
-Blog ：[www.wanglong.org,cn](http://wanglong.org.cn)
+Blog ：[博客](http://wanglong.org.cn)
 
 <p>
-Github ：  [https://github.com/chinawanglong](https://github.com/chinawanglong)
+Github ：  [github](https://github.com/chinawanglong)
 <p>
 
 <p>
