@@ -23,23 +23,20 @@ title: 关于我
 
 <h3> 联系方式 </h3>
 
-<p>
+
 QQ：   374562570
 
 <p>
 Email ： ycitwl@163.com
 
-<p>
-Blog ：[博客](http://wanglong.org.cn)
+Blog ：[http://wanglong.org.cn](http://wanglong.org.cn)
 
-<p>
 Github ：  [github](https://github.com/chinawanglong)
-<p>
 
-<p>
 wechat ：   ![wechat](www.wanglong.org.cn/images/wx_add.jpeg)
 <p>
 
 
 {% include comments.html %}
+
 
