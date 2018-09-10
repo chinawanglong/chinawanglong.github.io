@@ -15,8 +15,26 @@ title: 关于我
 
 <p>
 
-<h3> 现状 </h3>  
+<h3> 现状 </h3>
+
+<p>  
 供职于上海鸿维信息技术有限公司，司职技术开发，从事通信工程管理系统开发
+<p>
+
+<h3> 联系方式 </h3>
+
+<p>
+QQ   374562570
+
+Email  ycitwl@163.com
+
+Blog   [www.wanglong.org.cn](www.wanglong.org.cn)
+
+Github  [https://github.com/chinawanglong](https://github.com/chinawanglong)
+<p>
+
+<p>
+微信   ![wechat](images/wx_add.jpeg, '添加微信')
 <p>
 
 
