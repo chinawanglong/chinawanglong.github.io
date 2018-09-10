@@ -733,6 +733,8 @@ img::-moz-selection {
     border-color: #666;
     color: #666;
     /*opacity: .8; */
+    /*字体大小 --add elliot*/
+    font-size: 14px;
   }
 
   .navigation__item a:hover {
