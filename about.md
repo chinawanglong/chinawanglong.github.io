@@ -25,13 +25,18 @@ title: 关于我
 
 <p>
 qq : 374562570
-
+<p>
 Email : ycitwl@163.com
+<p>
+Blog :
+ 
+ [http://wanglong.org.cn](http://wanglong.org.cn)
 
-Blog : [http://wanglong.org.cn](http://wanglong.org.cn)
+<p>
+Github ：
 
-Github ：[https://github.com/chinawanglong](https://github.com/chinawanglong)
-
+[https://github.com/chinawanglong](https://github.com/chinawanglong)
+<p>
 wechat ：
  
  ![wechat](http://wanglong.org.cn/images/wx_add.jpeg "扫码添加好友")
