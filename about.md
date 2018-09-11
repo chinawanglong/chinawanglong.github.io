@@ -23,7 +23,7 @@ title: 关于我
 
 <h3> 联系方式 </h3>
 
-
+<p>
 qq : 374562570
 
 Email : ycitwl@163.com
@@ -36,7 +36,7 @@ wechat ：
  
  ![wechat](http://wanglong.org.cn/images/wx_add.jpeg "扫码添加好友")
  
-
+<p>
 
 {% include comments.html %}
 
