@@ -9,13 +9,13 @@ avatarDesc:  PHP全栈
 url: "http://wanglong.org.cn"
 
 # Comment
-comment:
-    disqus: leopard
-    uyan: 2143225  # 有言id,登录有言官网申请
-#comments:
-#    provider: disqus
-#    disqus:
-#        short_name: http-wanglong-org-cn
+#comment:
+#    disqus: leopard
+#    uyan: 2143225  # 有言id,登录有言官网申请
+comments:
+    provider: disqus
+    disqus:
+        short_name: http-wanglong-org-cn
 # Social
 social:
     weibo: 17712178535
