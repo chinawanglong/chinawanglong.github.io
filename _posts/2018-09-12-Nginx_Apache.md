@@ -1,8 +1,8 @@
 ---
 layout: post
-comments: true
-title:  Nginx 和 Apache 前世今生
-date： 2018-09-12
+comment: true
+title: Nginx 和 Apache 的前世今生
+date: 2018-09-12
 tag: Linux
 ---
 
