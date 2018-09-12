@@ -35,4 +35,11 @@ tag: Linux
 
 
 
+###  每日一言
+
+* 桃李不言，下自成蹊
+
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;转载请注明：[王龙的博客](http://wanglong.org.cn) >> [点击阅读原文](http://wanglong.org.cn/2018/09/Nginx_Apache/)
 
