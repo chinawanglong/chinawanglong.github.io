@@ -1,14 +1,14 @@
 ---
 layout: post
+title:  Nginx 和 Apache 前世今生
 comments: true
-title: Nginx 和 Apache 前世今生
 date： 2018-09-12
 tag: Linux
 ---
 
-&nbsp;&nbsp;&nbsp;&nbsp;`Nginx` 和 `Apache` 是当今两大主流web服务器软件， 做开发的不可避免的要接触和了解这两个web服务器，今天我们就来聊聊`Nginx`、`Apache`的前世今生，以及在相关服务器上的部署。
+&nbsp;&nbsp;&nbsp;&nbsp;`Nginx` 、 `Apache` 是当今两大主流web服务器软件， 做开发的不可避免的要接触和了解这两个web服务器，今天我们就来聊聊`Nginx`、`Apache`的前世今生，以及在相关服务器上的部署。
 
-###目录
+### 目录
 
 * [Nginx、Apache简介](#brief-introduction)
 * [Nginx、Apache集成开发环境](#inviroment)
@@ -18,20 +18,20 @@ tag: Linux
 * [Apache在Ubuntu上的部署](#apache-setup-on-ubuntu)
 * [以Nginx为例，部署Nginx+PHP+Mariadb开发环境](#nginx+php+mariadb)
 
-###<a name="brief-introduction"></a>Nginx、Apache简介
+### <a name="brief-introduction"></a>Nginx、Apache简介
 
 
-###<a name="inviroment"></a>Nginx、Apache集成开发环境
+### <a name="inviroment"></a>Nginx、Apache集成开发环境
 
-###<a name="nginx-setup-on-centos"></a>Nginx在centos部署
+### <a name="nginx-setup-on-centos"></a>Nginx在centos部署
 
-###<a name="apache-setup-on-centos"></a>Apache在centos部署
+### <a name="apache-setup-on-centos"></a>Apache在centos部署
 
-###<a name="nginx-setup-on-ubuntu"></a>Nginx在Ubuntu部署
+### <a name="nginx-setup-on-ubuntu"></a>Nginx在Ubuntu部署
 
-###<a name="apache-setup-on-ubuntu"></a>Apache在Ubuntu部署
+### <a name="apache-setup-on-ubuntu"></a>Apache在Ubuntu部署
 
-###<a name="nginx+php+mariadb"></a>以Nginx为例，部署Nginx+PHP+Mariadb开发环境
+### <a name="nginx+php+mariadb"></a>以Nginx为例，部署Nginx+PHP+Mariadb开发环境
 
 
 
