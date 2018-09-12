@@ -1,8 +1,9 @@
 ---
 layout: post
+comments: true
 title:  Nginx 和 Apache 前世今生
 date： 2018-09-12
-tag: Linux
+tag: 博客
 ---
 
 &nbsp;&nbsp;&nbsp;&nbsp;`Nginx` 、 `Apache` 是当今两大主流web服务器软件， 做开发的不可避免的要接触和了解这两个web服务器，今天我们就来聊聊`Nginx`、`Apache`的前世今生，以及在相关服务器上的部署。
