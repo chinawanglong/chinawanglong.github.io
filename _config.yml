@@ -10,7 +10,8 @@ url: "http://wanglong.org.cn"
 
 # Comment
 comment:
-    disqus: leopard
+#    disqus: leopard
+    disqus: elliot noob
     #uyan: 2143225  # 有言id,登录有言官网申请
 #comments:
 #    provider: disqus
