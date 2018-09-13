@@ -2,7 +2,7 @@
 layout: post
 comment: true
 title: Nginx 和 Apache 的前世今生
-date: 2018-01-12
+date: 2017-10-12
 tag: Linux
 ---
 
@@ -41,5 +41,5 @@ tag: Linux
 
 <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;转载请注明：[王龙的博客](http://wanglong.org.cn) >> [点击阅读原文](http://wanglong.org.cn/2018/09/Nginx_apache/)
+&nbsp;&nbsp;&nbsp;&nbsp;转载请注明：[王龙的博客](http://wanglong.org.cn) >> [点击阅读原文](http://wanglong.org.cn/2017/10/Nginx_apache/)
 
