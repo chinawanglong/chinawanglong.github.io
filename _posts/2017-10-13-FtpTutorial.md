@@ -111,72 +111,42 @@ tips: 对于Centos7 ，它的默认防火墙已改为FireWall进行管理，但�
   # 访问控制
   tcp_wrappers=YES
   
-  
-  # ---------开启虚拟用户组参数--------
-  # 开启虚拟用户
-  guest_enable=YES
-  # 主虚拟用户名vsftpd，等下会建立
-  guest_username=vsftpd
-  # 虚拟用户配置（可以对每一个虚拟用户进行单独的权限配置）
-  user_config_dir=/etc/vsftpd/vconf
-  
-  # 启用限定用户在其主目录下
-  chroot_local_user=YES
-  # 开启用户列表chroot管理
-  chroot_list_enable=YES
-  # chroot管理的用户列表（一行一用户,虚拟用户都要添加进去）
-  # 当设置用户只能在登录目录时，chroot管理的用户为不受限制，否则相反
-  chroot_list_file=/etc/vsftpd/chroot_list
-  # 允许chroot管理用户进行写操作
-  allow_writeable_chroot=YES
-  
-  # ---------虚拟用户高级参数（请选择一组）--------
-  # 虚拟用户和本地用户有相同的权限
-  virtual_use_local_privs=YES
-  
-  # 虚拟用户和匿名用户有相同的权限，默认是NO
-  virtual_use_local_privs=NO
-  
-  # 虚拟用户具有写权限（上传、下载、删除、重命名）
-  virtual_use_local_privs=YES
-  write_enable=YES
-  
-  # 虚拟用户不能浏览目录，只能上传文件，无其他权限
-  virtual_use_local_privs=NO
-  write_enable=YES
-  anon_world_readable_only=YES
-  anon_upload_enable=YES
-  
-  # 虚拟用户只能下载文件，无其他权限
-  virtual_use_local_privs=NO
-  write_enable=YES
-  anon_world_readable_only=NO
-  anon_upload_enable=NO
-  
-  # 虚拟用户只能上传和下载文件，无其他权限
-  virtual_use_local_privs=NO
-  write_enable=YES
-  anon_world_readable_only=NO
-  anon_upload_enable=YES
-  
-  # 虚拟用户只能下载文件和创建文件夹，无其他权限
-  virtual_use_local_privs=NO
-  write_enable=YES
-  anon_world_readable_only=NO
-  anon_mkdir_write_enable=YES
-  
-  # 虚拟用户只能下载、删除和重命名文件，无其他权限
-  virtual_use_local_privs=NO
-  write_enable=YES
-  anon_world_readable_only=NO
-  anon_other_write_enable=YES
-
 ```  
 
+### 开启ftp服务
+
+```
+	# 开机自启
+    systemctl enable vsftpd
+    # 启动ftp服务
+    systemctl start vsftpd
+```
+
+####  创建ftp账户
+
+```
+	useradd sk
+	passwd sk
+
+```
 
 
+###  防火墙设置
 
-
+```
+	# 设置21端口提供ftp服务
+    firewall-cmd --permanent --add-port=21/tcp
+    firewall-cmd --permanent --add-service=ftp
+    
+    # 重载防火墙模块
+    firewall-cmd --reload
+    
+    # SELinux
+    setsebool -P ftp_home_dir on
+   
+```
+&nbsp;&nbsp;&nbsp;&nbsp;
+ftp服务器设置完成!
 
 
 ### How to install ftp on MAC ?
@@ -184,3 +154,13 @@ tips: 对于Centos7 ，它的默认防火墙已改为FireWall进行管理，但�
 ```
    brew install inetutils
 ```
+
+
+### 每日一言
+
+* 虽然辛苦，我还是会选择那种滚烫的人生。
+
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+转载请注明： [王龙的博客](http://wanglong.org.cn) >> [阅读原文](http://wanglong.org.cn/2017/09/FtpTutorial/)
