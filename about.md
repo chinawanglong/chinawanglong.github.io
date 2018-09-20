@@ -29,7 +29,7 @@ title: 关于我
  
 * Github ：[https://github.com/chinawanglong](https://www.github.com/chinawanglong)
 
-* wechat ：![wechat](/images/posts/wechat/wechat.jpeg)
+* wechat ：![wechat](/images/wx_add.jpeg)
  
 <br>
 
