@@ -32,11 +32,11 @@ Email : ycitwl@163.com
 
 <br>
 
-Blog : [http://wanglong.org.cn](http://wanglong.org.cn)
-
+Blog :  http://www.wanglong.org.cn 
+ 
 <br>
 
-Github ：[https://github.com/chinawanglong](https://github.com/chinawanglong)
+Github ：https://www.github.com/chinawanglong
 
 <br>
 
