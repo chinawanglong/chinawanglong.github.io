@@ -70,6 +70,7 @@ __wakeup() unserialize之前被调用，做些对象的初始化
 
 > 求两个日期的差数，例如2017-01-01～2017-05-06的日期差
 
+
 ```php
 function diffDate($str1, $str2){
     $temp = explode('-', $str1);
@@ -81,6 +82,7 @@ function diffDate($str1, $str2){
 ```
 
 > 有一个网页地址，比如PHP开发资源主页：http://www.phpres.com/index.html,如何得到它的内容
+
 
 ```php
 // method 1: 
@@ -95,32 +97,36 @@ echo file_get_contents("http://www.phpres.com/index.html");
 
 > session 和 cookie 的区别是什么， 请从协议、产生的原因与作用说明
 
+
 * http无状态协议，不能区分用户是否从同一个网站上来，同一个用户请求不同的页面不能看作是同一个用户
 * session存储在服务器端， cookie存储在客户端，session比较安全，cookie用某些手段可以修改，不安全。session的缺点：保存在服务器端，每次读取都从服务器进行读取，对服务器资源有消耗。
 
  
- > HTTP状态码：302、403、500、200、502含义
+> HTTP状态码：302、403、500、200、502含义
+ 
  
  一二三四五原则：一、消息系列，二、成功系列， 三、重定向系列，四、请求错误系列， 五、服务器端错误系列
  
- > include与require的区别
+> include与require的区别
+ 
  
  * include()在执行文件时每次都要进行读取和评估,require()文件只处理一次，
  * require()通常放在PHP脚本程序的最前面，include()的使用和require()不一样，一般放在流程控制的处理区段，PHP脚本读到include()语句时，才将包含的文件读进来，可以把程序执行的流程简单化
  * require()包含的文件失败，程序停止执行，给出错误； include()执行失败，PHP脚本依然执行，返回一条警告
  
- > 单引号和双引号
+> 单引号和双引号
+ 
  * 单引号内部的变量不会执行， 双引号会执行
  * 单引号解析速度比双引号快
  * 单引号只能解析部分特殊字符，双引号可以解析所有特殊字符
  
 
 
- ### 每日一言
+### 每日一言
  
  * 清醒时做事，糊涂时读书，独处时思考，难过时睡觉，世上本无事，庸人自扰之。
  
  
- </br>
+ <br>
  
  转载请注明： [王龙的博客](http://wanglong.org.cn) >> [点击阅读原文](http://wanglong.org.cn/2017/11/php_job_interview/)
