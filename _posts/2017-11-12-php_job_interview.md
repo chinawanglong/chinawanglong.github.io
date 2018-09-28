@@ -120,6 +120,15 @@ echo file_get_contents("http://www.phpres.com/index.html");
  * 单引号解析速度比双引号快
  * 单引号只能解析部分特殊字符，双引号可以解析所有特殊字符
  
+ > empty()为空的数据类型有哪些
+ 
+ * 如果$e是为定义或者为NULL， empty($e) = true
+ * 如果$e是int类型， $e=0, empty($e) = true
+ * 如果$e是string类型, $e = ""; empty($e) = true
+ * 如果$e是string类型, $e = "0", empty($e) = true
+ * 如果$e是bool类型， $e = false, empty($e) = true
+ * 如果$e是array类型, $e = array(), empty($e) = true
+ 
 
 
 ### 每日一言
