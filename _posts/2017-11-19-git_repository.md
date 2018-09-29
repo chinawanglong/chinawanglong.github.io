@@ -102,5 +102,145 @@ $ git commit -m'commit read.md'
 
 ```
 
+###  工作区和暂存区
+
+工作区就是能够看到的目录，一般就是项目所在的目录。工作区有一个隐藏目录`.git` ， 这个不算工作区，而是git的版本库。Git的版本库里存了很多东西，其中最重要的就是陈巍stage（或者叫index）的暂存区， 还有Git为我们自动创建的第一个分支`master`， 以及指向`master`的一个指针`HEAD` 。
+
+![工作区、暂存区示意图](/images/posts/git/work_area.jpg)
+
+* `git add `把文件添加进去，实际上就是把文件修改添加到暂存区
+* `git commit`提交修改，实际上就是把暂存区的所有内容提交到当前分支
+
+因为我们创建Git版本库时，Git自动为我们创建了唯一一个`master`分支，所以，`git commit` 就是往`master`分支上提交更改。
+
+
+
+
+
+
 ###  Git常用操作
+
+```bash
+# 克隆一个远程仓库
+$ git clone repository_url   
+
+# 查看当前仓库状态
+$ git status
+
+# 查看文件做了哪些修改
+$ git diff filename
+
+# 撤销工作区对文件的额修改 : 两种状态： 1。没有添加到暂存区，撤销修改之后的文件和版本库中的一样  2。 添加到了暂存区之后添加修改，撤销修改之后的文件和暂存区的一样
+$ git checkout filename
+
+# 查看提交历史
+$ git log 
+
+# 定制历史信息输出
+$ git log --pretty=oneline
+
+# 回退到上一个版本—— 版本库的回退
+$ git reset --hard HEAD^
+
+# 跳转至指定某个版本——版本库的回退
+$ git reset --hard commit_id
+
+# 将暂存区的文件回退到上一个版本
+$ get reset HEAD filename
+
+# 查看git命令历史
+$ git reflog  
+
+# 查看工作区文件与版本库最新版本的区别
+$ git diff HEAD -- filename
+
+```
+
+
+###  远程仓库
+
+在GitHub上创建一个仓库`learngit`， 将本地仓库`learngit`关联新创建的GitHub仓库
+
+```bash
+$ git remote add origin git@github.com:yourname/learngit.git
+```
+
+添加之后，远程库的名字就是`origin` 。下一步，就可以把本地库的所有内容推送到远程库上（SSH key密钥要先上传GitHub）
+
+```bash
+$ git push -u origin master
+```
+
+把本地库的内容推送到远程， 用`git push`命令，实际上是把当前分支`master`推送到远程。由于远程仓库是空的，我们第一次推送`master`分支时，加上了`-u`参数，Git不但会把`master`分支内容推送到远程新的`master`分支，还会把本地`master`分支和远程`master`分支关联起来，在以后的推送或拉取就可以简化命令。
+
+
+###  分支
+
+每次提交，Git都会把他们串成一条时间线，每条时间线就是一个分支。截止目前，只有一条时间线，这个分支叫主分支，即`master`分支，`HEAD`严格来说不是指向提交，而是指向`master`，`master`才是指向提交的，所以，`HEAD`指向的就是当前分支。
+
+![head_master示意图](/images/posts/git/head_master.jpeg)
+
+每次提交，`master`分支都会向前移动一步，随之不断提交，`master`分支线也越来越长。
+
+
+当我们创建新的分支，例如`dev`时，Git新建了一个指针叫`dev`，指向`master`相同的提交，再把`HEAD`指向`dev`，就表示当前分支在`dev`。
+
+
+![dev分支示意图](/images/posts/git/dev.png)
+
+
+```bash
+#  创建dev分支并跳转至dev分支
+$ git checkout -b dev
+
+# 创建dev分支，然互跳转至dev分支
+$ git branch dev
+$ git checkout dev
+
+# 查看当前分支
+$ git branch 
+
+```
+
+创建新的`dev`分支后，对工作区的修改和提交就是针对`dev`分支了，比如新提交一次后，`dev`分支向前移动一步，而`master`指针不变。
+
+```bash
+#  在dev分支作修改 并提交
+$ git add .
+$ git commit -m'new modify'
+
+# 切换至master分支
+$ git checkout master
+
+#  这时是看不到提交的修改的，因为修改的部分在dev分支上，而master此刻的提交点并没有改变
+
+```
+
+假设我们的`dev`上的工作完成了，就可以把`dev`合并到 `master`上。怎么合并呢？  最简单的办法，就是直接把`master`指向`dev`的当前提交，就完成了合并。
+
+![dev、master分支合并示意图](/images/posts/git/master_dev.png)
+
+
+```bash
+#  合并dev分支
+$ git merge dev
+
+# git merge 命令用于合并指定分支到当前分支，合并之后就可以查看刚才提交的修改了
+
+```
+
+所以Git合并也很快！就改改指针，工作区内容也不变。
+
+合并完成后，甚至可以删除`dev`分支。删除`dev`分支就是把`dev`指针删除，删除后，我们就剩下一条`master`分支。
+
+```bash
+#  合并完成之后，删除dev分支
+$ git branch -d dev
+```
+
+
+####  解决冲突
+
+合并的过程中常常会遇到冲突的问题
+
 
