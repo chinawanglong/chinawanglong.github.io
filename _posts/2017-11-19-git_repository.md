@@ -18,7 +18,7 @@ tag:  Linux
 * [标签管理](#manager_tag)
 
 
-### <a name="origin"></>git起源
+### <a name="origin"></a>git起源
 
 大神Linus在1991年创建了开源的Linux， 之后， Linux不断发展，已成为最大的服务器系统软件。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的？
 
@@ -30,7 +30,7 @@ tag:  Linux
 
 于是，Linus花了两周的时间用C写了一个分布式版本控制系统，这就是Git！一个月内，Linux系统的源码已经由Git管理了。Git迅速成为最流行的分布式版本控制系统， 尤其是2008年，GitHub网站上线，它为开源项目免费提供Git存储，无数开源项目迁移至GitHub。
 
-###  <a name="centralized_distributed"></a>集中式与分布式
+###  <a name="centralize_distributed"></a>集中式与分布式
 
 上面提到的CVS和SVN都是集中式版本控制系统，Git是分布式版本控制系统。它们的区别是什么呢？
 
