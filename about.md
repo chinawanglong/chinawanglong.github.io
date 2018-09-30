@@ -26,6 +26,8 @@ title: 关于我
 * Email : ycitwl@163.com
 
 * Blog :  [http://wanglong.org.cn](http://www.wanglong.org.cn)
+
+* 码云 ： [https://gitee.com/chinawanglong](https://gitee.com/chinawanglong)
  
 * Github ：[https://github.com/chinawanglong](https://www.github.com/chinawanglong)
 
