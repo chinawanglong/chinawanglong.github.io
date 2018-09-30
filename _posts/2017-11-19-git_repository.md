@@ -6,7 +6,19 @@ date: 2017-11-19
 tag:  Linux
 ---
 
-### git起源
+###  目录
+
+* [Git起源](#origin)
+* [集中式与分布式](#centralize_distributed)
+* [安装](#install)
+* [版本库](#repository)
+* [Git常用操作](#base_operation)
+* [远程仓库](#remote_repository)
+* [分支](#dev)
+* [标签管理](#manager_tag)
+
+
+### <a name="origin"></>git起源
 
 大神Linus在1991年创建了开源的Linux， 之后， Linux不断发展，已成为最大的服务器系统软件。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的？
 
@@ -18,7 +30,7 @@ tag:  Linux
 
 于是，Linus花了两周的时间用C写了一个分布式版本控制系统，这就是Git！一个月内，Linux系统的源码已经由Git管理了。Git迅速成为最流行的分布式版本控制系统， 尤其是2008年，GitHub网站上线，它为开源项目免费提供Git存储，无数开源项目迁移至GitHub。
 
-###  集中式与分布式
+###  <a name="centralized_distributed"></a>集中式与分布式
 
 上面提到的CVS和SVN都是集中式版本控制系统，Git是分布式版本控制系统。它们的区别是什么呢？
 
@@ -38,7 +50,7 @@ CVS作为最早的开源而且免费的集中式版本控制系统，知道现�
 
 分布式版本控制系统除了Git以及BitKeeper之外，还有类似Git的Mercurial和Bazaar等。这些分布式版本控制系统各有千秋，但最快、最简单也最流行的依然是Git。
 
-###  安装
+###  <a name="install"></a>安装
 
 #### 在Linux上安装
 
@@ -73,7 +85,7 @@ $ git config --global user.email "email@example.com"
 `git config` 命令的`--global`参数，用了这个参数，表示这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和email地址
 
 
-###  版本库
+###  <a name="repository"></a>版本库
 
 版本库又名仓库， 可以理解为一个目录，这个目录里的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪， 以便任何时候都可以追踪历史，或者在将来某个时候可以还原。
 
@@ -118,7 +130,7 @@ $ git commit -m'commit read.md'
 
 
 
-###  Git常用操作
+###  <a name="base_operation"></a>Git常用操作
 
 ```bash
 # 克隆一个远程仓库
@@ -157,7 +169,7 @@ $ git diff HEAD -- filename
 ```
 
 
-###  远程仓库
+###  <a name="remote_repository"></a>远程仓库
 
 在GitHub上创建一个仓库`learngit`， 将本地仓库`learngit`关联新创建的GitHub仓库
 
@@ -174,7 +186,7 @@ $ git push -u origin master
 把本地库的内容推送到远程， 用`git push`命令，实际上是把当前分支`master`推送到远程。由于远程仓库是空的，我们第一次推送`master`分支时，加上了`-u`参数，Git不但会把`master`分支内容推送到远程新的`master`分支，还会把本地`master`分支和远程`master`分支关联起来，在以后的推送或拉取就可以简化命令。
 
 
-###  分支
+###  <a name="dev"></a>分支
 
 每次提交，Git都会把他们串成一条时间线，每条时间线就是一个分支。截止目前，只有一条时间线，这个分支叫主分支，即`master`分支，`HEAD`严格来说不是指向提交，而是指向`master`，`master`才是指向提交的，所以，`HEAD`指向的就是当前分支。
 
@@ -243,4 +255,189 @@ $ git branch -d dev
 
 合并的过程中常常会遇到冲突的问题
 
+分支切换提交时，很容易碰到冲突问题，Git用`<<<<<<`,`======`,`>>>>>>`标记不同分支的内容，修改手动修改，然后提交
+
+
+####  分支管理
+
+Git删除分支时一般采用的是`Fast forward`模式， 但这种模式下，删除分支后，会丢失分支信息。如果强制禁用`Fast forward`模式， Git就会在merge时生成一个新的commit，这样就可以从分支历史看出分支信息。
+
+禁用`Fast forward`模式，在`git merge`命令中加入参数`--no-ff`
+
+```bash
+# 禁用 Fast forward模式合并dev分支
+$ git merge --no-ff -m'merge with no-ff' dev
+```
+
+在实际开发中，我们应该按照几个基本原则进行分支管理
+* `master`分支应该是非常稳定的，仅用来发布新版本，不能在上面干活
+* 所有代码的提交应该建立一个类似的`dev`分支
+* 开发组成员clone`dev`分支，所有代码的提交应提交到dev分支，要发布新版本时，将`dev`分支合并到`master`分支
+* 每个开发成员应建立自己的特性分支，代码往`dev`合并
+
+#### Bug分支
+
+软件开发中，Bug的出现是不可避免的。 在Git中，由于分支是如此的强大，所以，每个Bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后删除临时分支。
+
+假如当前有个编号为110的bug修复任务，而当前`dev`的工作还没有完成，这时就要采用Git提供的`stash`功能。`stash`可以把当前工作现场储藏起来，等以后恢复现场后继续工作。
+
+```bash
+$ git stash
+ Saved working directory and index state WIP on dev: f52c633 add merge
+```
+
+现在用`git status` 查看工作区，就是干净的，没有未提交的文件，一次可以放心地创建分支来修复bug。
+
+首先确定要在哪个分支上修复Bug，假定需要在`master`分支上修复，就从`master`创建临时分支。
+
+```bash
+# 切换到master分支
+$ git master
+
+# 创建并切换至bug分支
+$ git checkout -b issue-110
+
+#  完成bug修复之后， 提交修改的文件
+$ git add filename
+$ git commit -m'fix bug 110'
+
+# 切换回master，合并issue-110分支
+$ git checkout master
+$ git merge --no-ff -m'merge bug fix 110' issue-110
+
+# 至此，完成bug110修复，回到dev的开发分支上继续开发任务
+$ git checkout dev
+
+# 该dev分支我们使用git stash封存了,查看封存的记录
+$ git stash list
+ stash@{0}: WIP on dev: f52c633 add merge
+ 
+# 恢复封存的方法有两种，1。git stash apply恢复，但是恢复后，stash内容并不删除，需要用git stash drop来删除； 2。git stash pop， 恢复的同时把stash内容也删除了
+$ git stash pop stash@{0}
+ 
+```
+
+#### 销毁分支
+
+开发的过程中需求是不断变化，谁也不能保证需求一成不变，开发的每一个功能都能成功运用都真是环境中。正确的开发协作方式，应该是每一个需求都对应了一个特性分支，当某个需求被砍掉的时候，只要删除其对应的特性分支就可以了。
+
+```bash
+# 见一个特性分支，开发财务流程
+$ git checkout -b finance-flow
+
+# 开发完成，提交所有文件
+$ git add .
+$ git commit -m'finance flow finish'
+
+# 这时被通知砍掉该需求，删掉finance-flow分支
+$ git checkout dev
+$ git branch -d finance-flow
+
+# 这时Git会提醒， 由于finance-flow未合并，不能删除，需要要-D参数强制删除
+$ git branch -D finance-flow
+```
+
+
+####  多人协作
+
+在合作开发过程中，每个人开发的需求不一样，就会出现不同的特性分支，不同的特性分支推送到远程仓库，这就关联到分支推送合并和的问题
+
+当我们从远程仓库克隆时，实际上Git自动把本地的`master`分支和远程的`master`分支对应起来（除非克隆的时候指定了分支）,远程仓库的默认名称是`origin`。
+
+```bash
+# 查看远程仓库的信息
+$ git remote
+
+# 查看更详细的信息
+$ git remote -v
+```
+
+推送分支就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上
+```bash
+$ git push origin master
+
+# 如果要推送其他分支，比如dev
+$ git push origin dev
+```
+
+但是，并不一定要把本地分支向远程推送，那么，哪些分支需要推动，哪些不需要？
+
+* `master`分支是主分支，一次要时刻与远程同步
+* `dev`分支是开发分支， 团队成员都需要在上面工作，所以也需要与远程同步
+* bug分支只用于本地修复bug，没有必要推送到远程
+* 特性分支，取决与是否与团队成员合作开发
+
+```bash
+# clone的时候没有指定分支，那么git默认本地是master分支对应远程的master分支，但是master分支一般来说是不能动的，只能在dev这个开发分支上进行开发，这时就要切换一个新分支对应远程的dev分支
+$ git checkout -b dev origin/dev
+```
+
+多人协作的模式：
+
+* 用`git push origin <branch-name>推动自己的修改
+* 如果推送失败，则因为远程分支比本地的跟新，需要先`git pull`试图融合
+* 如何合并有冲突，则解决冲突，并在本地提交
+* 在用 `git push origin <branch-name>` 推送
+
+
+如果 `git pull`提示`no tracking information` ，则说明本地分支和远程分支的链接关系没有创建，用命令`git push --set-upstream-to <branch-name> origin/<branch-name>`
+
+ 
+###  <a name="manager_tag"></a>标签管理
+
+在开发的一些关键时期，使用标签来记录这些关键时刻，比如发布版本，有重大升级，升级的时候，会使用标签记录这些时刻，开永久标记项目中的关键历史时刻
+
+标签分类
+
+* 轻量级标签（lightweight）： 轻量级标签的信息量很少，这种标签至代表某时刻代码的提交，相当于指向这个提交的指针
+
+* 带注释标签（annotated）： 这种标签是一种校验和，包好标签名、邮箱、日期、标签信息、GPG签名和验证，它相当于一个对象，封装来这些信息 
+
+####  创建标签
+
+在Git中打标签非常简单，首先，切换到需要打标签的分支上
+
+```bash
+$ git branch
+$ git checkout master
+
+#  打个标签-轻量级标签
+$ git tag v1.0
+
+# 查看标签
+$ git tag
+```
+
+默认标签是打在最新提交的commit上的。也可以指定commit_id，在指定提交上打标签。
+
+```bash
+# 指定标签名 -a  指定说明文字-m   指定提交 1049as
+$ git tag -a v2.0 -m'version 2.0 released' 1049as
+```
+
+
+####  操作标签
+
+如果标签打错了，也可以删除
+```bash
+$ git tag -d v1.0
+```
+因为创建的标签只存储在本地，不会自动推动到远程，所以，打错的标签可以在本地安全删除。
+
+如果要推送某个标签到远程，使用命令`git push origin <tagbane>`
+
+```bash
+$ git push origin tag v2.0
+
+# 一次性推送全部尚未推送到远程库的本地标签
+$ git push origin --tags
+
+# 如果标签已经推送到远程，要删除远程标签就麻烦些，先从本地删除
+$ git tag -d v2.0
+
+# 然后从远程删除，删除命令也是push
+$ git push origin :ref/tags/v2.0
+```
+
+   
 
