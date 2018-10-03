@@ -439,5 +439,14 @@ $ git tag -d v2.0
 $ git push origin :ref/tags/v2.0
 ```
 
+
+###  每日一言
+
+* 人生中有些事你不竭尽所能去做，你永远不知道你自己有多出色
+
+
+<br>
+
+转载请注明： [王龙的博客](http://wanglong.org.cn) >> [版本控制神器之git](http://wanglong.org.cn/2017/11/git_repository/)
    
 
