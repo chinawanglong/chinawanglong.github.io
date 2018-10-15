@@ -40,8 +40,7 @@ Post/Redirect/Get 方式除了能防止 Post 请求的重复提交外，还可�
 值得注意的是，PRG设计模式并不能使用所有的表单重复提交情况，如下几种情况
 
 * 如果用户返回表单页面，重新提交表单的情况
-*  用户在服务器端响应到达之前，多次点击提交按钮的时候。(可通过JavaScript控制提交按钮点击次数)
-
+* 用户在服务器端响应到达之前，多次点击提交按钮的时候。(可通过JavaScript控制提交按钮点击次数)
 * 由于服务器响应缓慢，用户刷新提交POST请求造成的多次POST请求
 *  恶意用户避开客户端预防多次提交手段，进行重复提交请求
 
@@ -70,4 +69,4 @@ tips： 恶意用户可利用这个一性质，不断重复访问页面，以致
 
 <br>
 
-转载请注明： [王龙的博客](http://www.wanglong.org.cn) >> [Post/Redirect/Get pattern | PRG 模式](http://www.wanglong.org.cn/2018/05/confirm_form_resubmission/)
+转载请注明： [王龙的博客](http://www.wanglong.org.cn)  >>  [Post/Redirect/Get pattern](http://www.wanglong.org.cn/2018/05/confirm_form_resubmission/)
