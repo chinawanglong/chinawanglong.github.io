@@ -31,6 +31,16 @@ Laravel 对于我来说是既熟悉又陌生，在刚开始学习PHP的时候，
 
 * 自动分页功能避免了在你的业务逻辑中混入大量无关分页配置的代码。方便的是不需要记住当前页，只需要数据库中获取总的条目数量，然后使用limit/offset获取选定的数据，最后调用paginate方法，让laravel将各页链接输出到指定的视图
 
+### 环境要求
+
+* PHP>=7.1.3
+* OpenSSL PHP Extension
+* PDO PHP Extension
+* Mbstring PHP Extension
+* Tokenizer PHP Extension
+* XML PHP Extension
+
+
 ### 安装
 
 * composer 安装方式
@@ -42,10 +52,46 @@ $ composer create-project --prefer-dist laravel/laravel  project_name
 *  laravel 方式
 
 ```bash
+$ composer global require "laravel/installer"
+# 利用laravel框架创建个新项目blog
+$ laravel new blog  
+```
 
+###  配置
+
+安装之后，配置服务器的`document/web` root 指向laravel框架的`public`目录，入口文件`index.php`就在该目录下。
+
+laravel框架的所有配置文件都在`config`目录内，可以根据需要，进行适当的修改。配置`storage`和`bootstrap/cache`目录是可写，这些是缓存文件。
+
+
+###  服务器配置
+
+#### Apache
+
+laravel 在`public`目录下有个`.htaccess`文件，这个文件配置apache对URL读写规则。
+
+```bash
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+```
+
+####  Nginx
+
+假如你使用的服务器软件是Nginx， `public/.htaccess`文件就不起作用了，在`nginx.conf`中增加如下配置
+
+```bash
+location / {
+    try_files $uri $uri/ /index.php?$query_string;	
+}
 ```
 
 ###  每日一言
+
+* 不管你用什么方式活着，我们只有一个目的，别违心，以及别后悔，还有，去他的人言可畏
 
 <br>
 
