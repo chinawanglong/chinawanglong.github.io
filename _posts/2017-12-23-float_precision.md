@@ -46,6 +46,81 @@ function addNum(a,b){
 }
 ```
 
+### Js重写toFixed方法
+
+前端的很多数据处理，比如保留几位小数，四舍五入等问题，会用到toFixed()函数。
+
+```javascript
+numObj.toFixed([fractionDigits]);
+```
+
+参数：
+
+NumberObj: 一个number对象
+
+franctionDigits: 可选项，小数点后的数字位数，其值必须在0～20之间。如果没有fractionDigits参数，或者该参数为undefined， toFixed方法假定该值为0。
+
+但是该方法在四舍五入的时候并不总正确，有些浏览器不能正确的解析。
+```html
+<input onclick="alert(0.097.toFixed(2))" type="button" value="显示0.097.toFixed(2)">
+```
+在ie7浏览器下按钮会显示0.00，而不是预期的0.01
+
+那怎么办呢？ 可以对toFixed做简单的处理。重写
+
+```javascript
+Number.prototype.toFixed = function(n){
+    if ( n<0 || n>20 ){
+        throw new RangeError('toFixed() digits argument must be between 0 and 20');
+    }
+    const number = this;
+    if (isNaN(number) || number >= Math.pow(10, 21)){
+        return number.toString();
+    }
+    if (typeof n === 'undefined' || n === 0){
+        return (Math.round(number)).toString();
+    }
+    let result = number.toString();
+    const arr = result.split('.');
+    // 整数的情况
+    if (arr.length < 2){
+       result += '.';
+       for (let i = 0; i < n; i += 1){
+           result += '0';
+       }
+       return result;
+    }
+    
+    const integer = arr[0];
+    const decimal = arr[1];
+    if (decimal.length === n){
+        return result;
+    }
+    if (decimal.length < n){
+        for (let i = 0; i < n - decimal.length; i += 1){
+            result += '0';
+        }
+        return result;
+    }
+    result = integer + '.' + decimal.substr(0, n);
+    const last = decimal.substr(n, 1);
+    
+    // 四舍五入，转为整数在处理，避免浮点精度的损失
+    if (parseInt(last, 10) >= 5){
+        const x = Math.pow(10, n);
+        result = (Math.round((parseFloat(result) * x)) + 1) / x;
+        result = result.toFixed(n);
+    }
+    
+    return result;
+    
+    // return (parseInt(this * Math.pow(10, s) + 0.5) / Math.pow(10, s)).toString();
+}
+```
+
+上面按钮在ie7下就能正确显示为0.01了。
+ 
+
 
 ###  PHP的精度处理
 
