@@ -9,6 +9,29 @@ tag: PHP
 
 只要有用户参与的系统一般都要有权限管理，权限管理实现对用户访问系统的控制，按照安全规则或者安全策略控制用户可以访问而且只能访问自己被授权的资源。
 
+程序思路
+
+1、用户登录后通过用户的role_id 可以拿到所有的权限类别的id； 
+
+2、通过所有的权限列表的rule_id 可以将所有的权限列表信息取出来-》$ruleRows；
+ 
+3、将取出的数据利用递归组装，方便放入导航栏中
+
+```php
+$ruleData = array();
+foreach ($ruleRows as $key => $ruleRow){
+    if ($ruleRow['parent_id'] == 0){
+        if (isset($ruleData[$ruleRow['id']])){
+            $ruleData[$ruleRow['id']] = array_merge($ruleData[$ruleRow['id']], $ruleRow);
+        } else {
+        	$ruleData[$ruleRow['id']] = $ruleRow;
+        }
+    } else {
+    	$ruleData[$ruleRow['parent_id']]['sub'][$ruleRow['id']] = $ruleRow;
+    }
+}
+return $ruleData;
+```
 
 
 相关数据表设计如下：
