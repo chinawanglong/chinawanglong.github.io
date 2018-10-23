@@ -78,6 +78,8 @@ CHANGELOG记录项目的变更日志，对项目使用者非常重要，特别�
 
 最后再送给大家一句话，开源一个项目，重在开始，贵在坚持
 
+推荐： [手把手教你如何构建一个优秀的开源项目](https://laravel-china.org/articles/5265/how-to-build-an-open-source-project-that-breaks-thousands-of-star)
+
 ### 每日一言
 
 * 重在开始，贵在坚持
