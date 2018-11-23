@@ -148,7 +148,14 @@ return [
 在登录验证的时候略做修改
 
 ```php
-<?
+<?php
+// routes/web.php
+
+Route::group(['middleware' => ['auth:web_admin']);
+?>
+
+
+<?php
 // LoginController.php
 namespace App\Http\Controller;
 
