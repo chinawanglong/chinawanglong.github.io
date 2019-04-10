@@ -64,7 +64,7 @@ nav:
 #    - {title: 所有文章, description: archive, url: '/archive'}
 #    - {title: 标签, description: tags, url: '/tags'}
 #    - {title: 关于我, description: about, url: '/about'}
-    - {title: 备案号: 苏ICP备18045057号-1, description: '', url: 'http://wanglong.org.cn/'}
+    - {title: 备案号: 苏ICP备18045057号-1, description: '', url: 'http://www.miitbeian.gov.cn'}
     
 
 # Pagination
